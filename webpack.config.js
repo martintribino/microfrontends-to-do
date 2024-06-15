@@ -4,7 +4,19 @@ const deps = require("./package.json").dependencies;
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
+  entry: './to-do-react/src/index.tsx',
+  entry: {
+    app: {
+      import: './to-do-react/src/index.tsx',
+    }
+  },
+  cache: false,
   mode: "development",
+  devtool: 'source-map',
+
+  optimization: {
+    minimize: false,
+  },
   devServer: {
     port: 3001,
     allowedHosts: "all",
@@ -16,7 +28,6 @@ module.exports = {
       favicon: "src/favicon.ico",
     }),
   ],
-  entry: "./to-do-react/src/index",
   output: {
     publicPath: "http://localhost:3001/",
   },
@@ -48,7 +59,7 @@ module.exports = {
       name: "todoApp",
       filename: "remoteEntry.js",
       exposes: {
-        "./TodoApp": "./to-do-react/src/App.tsx",
+        "./TodoApp": "./to-do-react/src/App",
       },
       shared: {
         ...deps,

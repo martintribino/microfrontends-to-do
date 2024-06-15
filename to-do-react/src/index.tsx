@@ -1,14 +1,14 @@
 
 import React from 'react';
 import App from './App';
-import ReactDOM from 'react-dom';
+import ReactDOM from "react-dom/client";
 
+const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 const render = (Component: React.FC) => {
-  ReactDOM.render(
+  root.render(
     <React.StrictMode>
       <Component />
-    </React.StrictMode>,
-    document.getElementById('root')
+    </React.StrictMode>
   );
 };
 
